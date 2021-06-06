@@ -7,6 +7,7 @@ const EntryPoint: React.FC<{}> = () => {
   return (
     <View style={[flx.f1,bg.secondary_light]}>
       <HomeScreen />
+      
     </View>
   );
 };
