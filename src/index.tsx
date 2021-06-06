@@ -1,20 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import { pl } from './styles/padding/pl';
+import { View } from 'react-native';
+import HomeScreen from './screens/Home';
+import { bg, flx } from './styles';
 
 const EntryPoint: React.FC<{}> = () => {
   return (
-    <View style={[pl.d2,styles.background]}>
-      <Text>Hellor User</Text>
+    <View style={[flx.f1,bg.secondary_light]}>
+      <HomeScreen />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#ffff0033',
-    flex: 1,
-  },
-});
-
 export default EntryPoint;

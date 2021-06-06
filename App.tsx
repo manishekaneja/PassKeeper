@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet
-} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
 import EntryPoint from './src';
+import {bg} from './src/styles';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" hidden />
+    <SafeAreaView style={[styles.container, bg.light]}>
+      <StatusBar hidden />
       <EntryPoint />
     </SafeAreaView>
   );

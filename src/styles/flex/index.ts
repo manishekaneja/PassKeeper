@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const flex = StyleSheet.create({
+const flx = StyleSheet.create({
   flex: {
     display: 'flex',
   },
@@ -22,4 +22,11 @@ const flex = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  center:{
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"stretch"
+  }
 });
+
+export {flx};
