@@ -22,6 +22,11 @@ const flx = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  cntr:{
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center"
+  },
   center:{
     display:"flex",
     justifyContent:"center",
