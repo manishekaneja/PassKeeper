@@ -2,17 +2,18 @@ import {StyleSheet} from 'react-native';
 
 const theme = {
   primary: {
-    light: '#aeb8fe',
-    default: '#758bfd',
+    light: '#9fc3d4',
+    default: '#3a44a1',
     dark: '#4f518f',
   },
   secondary: {
-    light: '#e3887c',
-    default: '#f03a47',
-    dark: '#8d2934',
+    light: '#fbcbc4',
+    default: '#dd5c64',
+    dark: '#df8f61',
   },
-  dark: '#291720',
-  light: '#d6d6b1',
+  success:"#3a955e",
+  dark: '#11141c',
+  light: '#f8f8f8',
 };
 
 export {theme};

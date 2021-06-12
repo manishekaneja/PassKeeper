@@ -1,9 +1,13 @@
 import {StyleSheet} from 'react-native';
 
 const border = StyleSheet.create({
-  r25: {
-    borderRadius:25 ,
-    overflow:"hidden"
+  r50: {
+    borderRadius: 50,
+    overflow: 'hidden',
+  },
+  r10: {
+    borderRadius: 10,
+    overflow: 'hidden',
   },
 });
 

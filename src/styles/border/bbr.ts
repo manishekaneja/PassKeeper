@@ -5,6 +5,10 @@ const bbr = StyleSheet.create({
     borderBottomRightRadius:50,
     overflow:"hidden"
   },
+  r10: {
+    borderBottomRightRadius:10,
+    overflow:"hidden"
+  },
 });
 
 export {bbr};

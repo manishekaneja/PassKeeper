@@ -1,5 +1,6 @@
+import {StackActions, useNavigation} from '@react-navigation/core';
 import React, {FC, useCallback} from 'react';
-import {Dimensions, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Pressable, SafeAreaView, Text, View} from 'react-native';
 import Animated, {
   useAnimatedRef,
   useAnimatedScrollHandler,
@@ -10,13 +11,16 @@ import Animated, {
 import Basic from '../assets/svg/basic.svg';
 import Basic2 from '../assets/svg/basic2.svg';
 import Basic3 from '../assets/svg/basic3.svg';
-
+import CheckIcon from '../assets/svg/check.svg';
+import LeftArrow from '../assets/svg/leftArrow.svg';
+import RightArrow from '../assets/svg/rightArrow.svg';
 import GuideTemplate from '../components/Guide/GuideTemplate';
-import {bg, btl, color, flx, font, height, p, pb, pt, py} from '../styles';
+import {bg, color, flx, font, height, p, pb, pt, py} from '../styles';
+import {theme} from '../styles/theme';
 
 const {width} = Dimensions.get('screen');
 
-const HomeScreen: FC<NoProps> = () => {
+const GuideScreen: FC<NoProps> = () => {
   const scrollViewRef = useAnimatedRef<Animated.ScrollView>();
   const position = useSharedValue(0);
   const scrollHandler = useAnimatedScrollHandler({
@@ -36,6 +40,13 @@ const HomeScreen: FC<NoProps> = () => {
       width: withTiming(position.value > width ? width / 2 : 0),
     };
   }, [position]);
+  const hideOnFirst = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(position.value <= 0 ? 0 : 1),
+      width: withTiming(position.value <= 0 ? 0 : width / 2),
+    };
+  }, [position]);
+  const {navigate, dispatch} = useNavigation();
 
   const goBack = useCallback(() => {
     // @ts-ignore
@@ -51,8 +62,12 @@ const HomeScreen: FC<NoProps> = () => {
     });
   }, [scrollViewRef, position]);
 
+  const completeAction = useCallback(() => {
+    dispatch(StackActions.replace('Home'));
+  }, [navigate]);
+
   return (
-    <React.Fragment>
+    <SafeAreaView style={[flx.f1]}>
       <Animated.ScrollView
         ref={scrollViewRef}
         scrollEventThrottle={width}
@@ -99,45 +114,52 @@ const HomeScreen: FC<NoProps> = () => {
         </GuideTemplate>
       </Animated.ScrollView>
       <View style={[flx.row, bg.light]}>
-        <Animated.View style={[flx.f1, bg.light, height.d50]}>
-          <TouchableOpacity
-            activeOpacity={0.75}
+        <Animated.View style={[flx.f1, bg.light, height.d50, hideOnFirst]}>
+          <Pressable
+            android_ripple={{
+              borderless: false,
+              color: theme.secondary.light,
+              radius: 100,
+            }}
             style={[bg.light, height.d50, flx.center, flx.f1]}
             onPress={goBack}>
             <Text style={[font.f18, color.light, flx.center, font.center]}>
-              Prev
+              <LeftArrow width={32} color={theme.dark} />
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </Animated.View>
         <Animated.View
           style={[bg.light, height.d50, hideOnLast, {overflow: 'hidden'}]}>
-          <TouchableOpacity
-            activeOpacity={0.95}
+          <Pressable
+            android_ripple={{
+              borderless: false,
+              color: theme.secondary.light,
+              radius: 100,
+            }}
             style={[p.d5, flx.center, flx.f1]}
             onPress={goNext}>
             <Text style={[font.f18, color.light, flx.center, font.center]}>
-              Next
+              <RightArrow width={32} color={theme.dark} />
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </Animated.View>
         <Animated.View style={[bg.light, height.d50, showOnLast]}>
-          <TouchableOpacity
-            activeOpacity={0.95}
+          <Pressable
+            android_ripple={{
+              borderless: false,
+              color: theme.secondary.light,
+              radius: 100,
+            }}
             style={[p.d5, flx.center, flx.f1]}
-            onPress={() => {
-              // @ts-ignore
-              scrollViewRef.current.scrollTo({
-                x: Math.min(position.value + width, width * 3),
-              });
-            }}>
+            onPress={completeAction}>
             <Text style={[font.f18, color.light, flx.center, font.center]}>
-              Go
+              <CheckIcon width={32} color={theme.success} />
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </Animated.View>
       </View>
-    </React.Fragment>
+    </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default GuideScreen;
