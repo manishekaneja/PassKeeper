@@ -97,7 +97,7 @@ const TabIcon: FC<{
       transform: [
         {
           translateY: withTiming(focused.value ? -25 : 0, {
-            duration: 500,
+            duration: 300,
           }),
         },
       ],
@@ -107,11 +107,11 @@ const TabIcon: FC<{
   const hightlighted = useAnimatedStyle(
     () => ({
       backgroundColor: withTiming(focused.value ? theme.light : theme.dark, {
-        duration: 500,
+        duration: 300,
         easing: Easing.bezier(0.25, 0.1, 0.25, 1),
       }),
       elevation: withTiming(focused.value ? 25 : 0, {
-        duration: 500,
+        duration: 300,
         easing: Easing.bezier(0.25, 0.1, 0.25, 1),
       }),
     }),

@@ -23,7 +23,7 @@ const ScreenContainerLayout: FC<{safeMode?: boolean}> = ({
           {children}
         </SafeAreaView>
       ) : (
-        <View style={[flx.f1, bg.light, {paddingTop: StatusBar.currentHeight}]}>
+        <View style={[flx.f1, bg.light]}>
           {children}
         </View>
       )}
