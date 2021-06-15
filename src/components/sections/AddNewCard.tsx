@@ -1,10 +1,15 @@
-import React, {FC} from 'react';
+import {useNavigation} from '@react-navigation/core';
+import React, {FC, useCallback} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import Card from '../../assets/svg/add-card.svg';
 import {bg, border, flx, font, height, mb, my, p} from '../../styles';
 import {theme} from '../../styles/theme';
 
 const AddNewCard: FC<NoProps> = () => {
+  const {navigate} = useNavigation();
+  const navigateToAddCardScreen = useCallback(() => {
+    navigate('CreateKeyCard');
+  }, []);
   return (
     <View
       style={[
@@ -16,9 +21,10 @@ const AddNewCard: FC<NoProps> = () => {
         },
       ]}>
       <Pressable
+        onPress={navigateToAddCardScreen}
         android_ripple={{
           borderless: true,
-          color: theme.light + '33',
+          color: theme.light ,
           radius: 200,
         }}
         style={[bg.dark, flx.cntr, height.d200]}>
