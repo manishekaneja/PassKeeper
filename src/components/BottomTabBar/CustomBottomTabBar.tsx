@@ -3,19 +3,13 @@ import {
   BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
 import React, {FC, useCallback} from 'react';
-import {Pressable, View} from 'react-native';
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useDerivedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import {View} from 'react-native';
 import DashboardIcon from '../../assets/svg/dashboard.svg';
 import KeyIcon from '../../assets/svg/key.svg';
 import PinIcon from '../../assets/svg/pin.svg';
 import UserIcon from '../../assets/svg/user.svg';
-import {bg, border, flx, height, py} from '../../styles';
-import {theme} from '../../styles/theme';
+import {bg, flx, height} from '../../styles';
+import {TabIcon} from './TabIcon';
 
 const IconConfigObject: Record<string, any> = {
   Dashboard: DashboardIcon,
@@ -81,75 +75,3 @@ const CustomBottomTabBar: FC<BottomTabBarProps<BottomTabBarOptions>> = ({
   );
 };
 export default CustomBottomTabBar;
-
-const TabIcon: FC<{
-  Image: string;
-  onLongPress: () => void;
-  onPress: () => void;
-  title: string;
-  isFocused: boolean;
-}> = ({Image, onPress, onLongPress, isFocused}) => {
-  const focused = useDerivedValue(() => {
-    return isFocused;
-  }, [isFocused]);
-  const selectedStyles = useAnimatedStyle(
-    () => ({
-      transform: [
-        {
-          translateY: withTiming(focused.value ? -25 : 0, {
-            duration: 300,
-          }),
-        },
-      ],
-    }),
-    [focused],
-  );
-  const hightlighted = useAnimatedStyle(
-    () => ({
-      backgroundColor: withTiming(focused.value ? theme.light : theme.dark, {
-        duration: 300,
-        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-      }),
-      elevation: withTiming(focused.value ? 25 : 0, {
-        duration: 300,
-        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-      }),
-    }),
-    [focused],
-  );
-  return (
-    <Animated.View style={[flx.f1, flx.cntr, py.d16, selectedStyles]}>
-      <Animated.View
-        style={[flx.cntr, border.r50, height.d50, {width: 50}, hightlighted]}>
-        <Pressable
-          onPress={onPress}
-          onLongPress={onLongPress}
-          android_ripple={{borderless: true, color: 'transparent', radius: 0}}
-          //   android_ripple={{
-          //     borderless: true,
-          //     color: theme.light,
-          //     radius: 50,
-          //   }}
-        >
-          {/* @ts-ignore */}
-          <Image
-            {...{
-              width: 24,
-              color: isFocused ? theme.dark : theme.secondary.light + '66',
-            }}
-          />
-          {/* <Text
-            style={[
-              {
-                color: isFocused ? theme.light : theme.secondary.light + '66',
-                marginTop: -10,
-                fontSize: 10,
-              },
-            ]}>
-            {title}
-          </Text> */}
-        </Pressable>
-      </Animated.View>
-    </Animated.View>
-  );
-};
