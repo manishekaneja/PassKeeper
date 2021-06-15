@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import {Text} from 'react-native';
+import {StyleProp, Text, TextStyle} from 'react-native';
 import {font, p} from '../../../styles';
 import {theme} from '../../../styles/theme';
 
-const Heading: FC<{}> = ({children}) => {
+const Heading: FC<{style?: StyleProp<TextStyle>}> = ({children, style}) => {
   return (
     <Text
       allowFontScaling={false}
@@ -11,6 +11,7 @@ const Heading: FC<{}> = ({children}) => {
         p.d10,
         font.f24,
         {fontWeight: '700', color: theme.dark, textAlign: 'left'},
+        style,
       ]}>
       {children}
     </Text>
