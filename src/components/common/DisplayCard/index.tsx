@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
-import {bg, border, flx, m, mx, my, px, py} from '../../styles';
+import {bg, border, flx, m, mx, my, px, py} from '../../../styles';
 
 const DisplayCard: FC<{
   style?: StyleProp<ViewStyle>;

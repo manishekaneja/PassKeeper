@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
 import Animated from 'react-native-reanimated';
-import {bbl, bbr, bg, btl, btr, flx, p, px} from '../../styles';
+import {bbl, bbr, bg, btl, btr, flx, p, px} from '../../../styles';
 
 const ScreenContainerLayout: FC<{safeMode?: boolean}> = ({
   children,

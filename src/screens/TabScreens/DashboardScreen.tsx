@@ -1,12 +1,13 @@
 import React, {FC} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import ScreenContainerLayout from '../../components/ScreenContainer/ScreenContainerLayout';
+import ScreenContainerLayout from '../../components/common/ScreenContainer/ScreenContainerLayout';
 import {bg, border, flx, font, height, m, mb, p, px, py} from '../../styles';
 import {theme} from '../../styles/theme';
 import Card from '../../assets/svg/add-card.svg';
 import Key from '../../assets/svg/key.svg';
-import DisplayCard from '../../components/DisplayCard';
+import DisplayCard from '../../components/common/DisplayCard';
+import Heading from '../../components/common/Heading';
 
 const DashboardScreen: FC<{children: React.ReactChildren}> = ({children}) => {
   return (
@@ -42,12 +43,7 @@ const DashboardScreen: FC<{children: React.ReactChildren}> = ({children}) => {
             </Text>
           </Pressable>
         </View>
-        <Text
-          allowFontScaling={false}
-          style={[{color: theme.dark, textAlign: 'left'}, p.d10, font.f18]}>
-          Insights
-        </Text>
-
+        <Heading>Insights</Heading>
         <DisplayCard style={[bg.primary_light, flx.cntr, flx.row]}>
           <Text
             allowFontScaling={false}

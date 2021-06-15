@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {bg, mb, mx, my} from '../../styles';
+import {bg, my} from '../../../styles';
 
 const Divider: FC<{gutter?: boolean}> = ({gutter = false}) => (
   <View
