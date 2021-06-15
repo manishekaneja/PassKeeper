@@ -5,7 +5,7 @@ import ScreenContainerLayout from '../../../components/common/ScreenContainer/Sc
 import AddNewCard from '../../../components/sections/AddNewCard';
 import {flx, pb, pt, px} from '../../../styles';
 
-const KeysScreen: FC<NoProps> = () => {
+const PinnedScreen: FC<NoProps> = () => {
   return (
     <ScreenContainerLayout>
       <ScrollView style={[flx.f1, px.d10, pt.d1, pb.d20]}>
@@ -15,4 +15,4 @@ const KeysScreen: FC<NoProps> = () => {
     </ScreenContainerLayout>
   );
 };
-export default KeysScreen;
+export default PinnedScreen;

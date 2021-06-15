@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Pressable, Text, View} from 'react-native';
-import Card from '../../../assets/svg/add-card.svg';
+import Card from '../../assets/svg/add-card.svg';
 import {bg, border, flx, font, height, mb, my, p} from '../../styles';
 import {theme} from '../../styles/theme';
 
