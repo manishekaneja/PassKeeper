@@ -6,6 +6,7 @@ import {bg, border, flx, font, height, m, mb, p, px, py} from '../../styles';
 import {theme} from '../../styles/theme';
 import Card from '../../assets/svg/add-card.svg';
 import Key from '../../assets/svg/key.svg';
+import DisplayCard from '../../components/DisplayCard';
 
 const DashboardScreen: FC<{children: React.ReactChildren}> = ({children}) => {
   return (
@@ -47,54 +48,32 @@ const DashboardScreen: FC<{children: React.ReactChildren}> = ({children}) => {
           Insights
         </Text>
 
-        <View style={[flx.f1, flx.row, flx.center]}>
-          <View
-            style={[
-              bg.primary_light,
-              border.r10,
-              flx.f1,
-              py.d14,
-              px.d14,
-              m.d2,
-            ]}>
-            <Text
-              allowFontScaling={false}
-              style={[
-                font.f12,
-                {color: theme.dark, fontWeight: '700', textAlign: 'center'},
-              ]}>
-              Total Credentials Count:
-            </Text>
-            <View style={[flx.cntr, flx.row]}>
-              <Text
-                allowFontScaling={false}
-                style={[
-                  {color: theme.dark, textAlign: 'center', fontSize: 48},
-                ]}>
-                10
-              </Text>
-              <Key height={40} color={theme.dark} />
-            </View>
-          </View>
-          <View
-            style={[
-              bg.secondary_light,
-              border.r10,
-              flx.f1,
-              py.d14,
-              px.d14,
-              m.d2,
-            ]}>
-            <Text style={[{color: theme.dark}, font.f12]}>
-              Total Pinned Cards:
-            </Text>
+        <DisplayCard style={[bg.primary_light, flx.cntr, flx.row]}>
+          <Text
+            allowFontScaling={false}
+            style={[font.f18, flx.f1, {color: theme.dark, fontWeight: '700'}]}>
+            Total Credentials Count:
+          </Text>
+          <View style={[flx.cntr, flx.row]}>
+            <Key height={40} color={theme.dark} />
             <Text
               allowFontScaling={false}
               style={[{color: theme.dark, textAlign: 'center', fontSize: 48}]}>
               10
             </Text>
           </View>
-        </View>
+        </DisplayCard>
+        <DisplayCard style={[bg.secondary_light, flx.row, flx.cntr]}>
+          <Text
+            style={[font.f18, flx.f1, {color: theme.dark, fontWeight: '700'}]}>
+            Total Pinned Cards:
+          </Text>
+          <Text
+            allowFontScaling={false}
+            style={[{color: theme.dark, textAlign: 'center', fontSize: 48}]}>
+            10
+          </Text>
+        </DisplayCard>
       </ScrollView>
     </ScreenContainerLayout>
   );
