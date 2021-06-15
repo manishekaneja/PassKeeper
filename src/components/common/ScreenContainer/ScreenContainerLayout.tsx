@@ -1,11 +1,18 @@
 import React, {FC} from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleProp,
+  View,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 import {bbl, bbr, bg, btl, btr, flx, pb} from '../../../styles';
 
-const ScreenContainerLayout: FC<{safeMode?: boolean}> = ({
-  children,
-  safeMode = false,
-}) => {
+const ScreenContainerLayout: FC<{
+  style?: StyleProp<ViewStyle>;
+  safeMode?: boolean;
+}> = ({children, style, safeMode = false}) => {
   return (
     <>
       <View
@@ -18,11 +25,16 @@ const ScreenContainerLayout: FC<{safeMode?: boolean}> = ({
       />
       {safeMode ? (
         <SafeAreaView
-          style={[flx.f1, bg.light, {paddingTop: StatusBar.currentHeight}]}>
+          style={[
+            flx.f1,
+            bg.light,
+            {paddingTop: StatusBar.currentHeight},
+            style,
+          ]}>
           {children}
         </SafeAreaView>
       ) : (
-        <View style={[flx.f1, bg.light, pb.d1]}>{children}</View>
+        <View style={[flx.f1, bg.light, pb.d1, style]}>{children}</View>
       )}
       <View style={[bg.dark, btl.r10, btr.r10, {height: 5, elevation: 20}]} />
     </>
