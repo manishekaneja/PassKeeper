@@ -4,7 +4,6 @@ import {
   StatusBar,
   StyleProp,
   View,
-  ViewProps,
   ViewStyle,
 } from 'react-native';
 import {bbl, bbr, bg, btl, btr, flx, pb} from '../../../styles';

@@ -1,23 +1,24 @@
 import React, {FC} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
-import {bg, border, flx, m, mx, my, px, py} from '../../../styles';
+import {bg, border, flx, height, m, mx, my, p, px, py} from '../../../styles';
 
-const CredCard: FC<{
+const CredCardContainer: FC<{
   style?: StyleProp<ViewStyle>;
 }> = ({children, style}) => {
   return (
     <View
       style={[
-        bg.white,
-        flx.f1,
-        px.d14,
+        height.d200,
+        bg.dark,
+        border.r10,
+        p.d14,
         my.d5,
-        mx.d2,
-        {elevation: 2},
+        flx.center,
+        {elevation: 1},
         style,
       ]}>
       {children}
     </View>
   );
 };
-export default CredCard;
+export default CredCardContainer;
