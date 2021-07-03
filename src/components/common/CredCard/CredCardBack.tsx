@@ -4,11 +4,15 @@ import {TextInput} from 'react-native-gesture-handler';
 import {bg, border, color, flx, font, height, my, p, px} from '../../../styles';
 import {theme} from '../../../styles/theme';
 
-const CredCardBack: FC<{
-  style?: StyleProp<ViewStyle>;
-}> = ({style}) => {
-  const [value, setValue] = useState<string>('');
-  const onChange = useCallback(text => setValue(text), []);
+const CredCardBack: FC<
+  CredCardBackProps & {
+    style?: StyleProp<ViewStyle>;
+  }
+> = ({onUpdate, style}) => {
+  const onChange = useCallback(
+    (type: 'username' | 'password') => (text: string) => onUpdate(text, type),
+    [],
+  );
 
   return (
     <View
@@ -23,7 +27,15 @@ const CredCardBack: FC<{
         style,
       ]}>
       <TextInput
-        onChangeText={onChange}
+        onChangeText={onChange('username')}
+        autoCapitalize="none"
+        contextMenuHidden={true}
+        autoCompleteType={'username'}
+        keyboardType="email-address"
+        spellCheck={false}
+        textContentType="username"
+        underlineColorAndroid="transparent"
+        autoCorrect={false}
         placeholderTextColor={theme.light}
         placeholder="username/email"
         style={[
@@ -37,7 +49,15 @@ const CredCardBack: FC<{
         ]}
       />
       <TextInput
-        onChangeText={onChange}
+        onChangeText={onChange('password')}
+        autoCapitalize="none"
+        autoCompleteType={'password'}
+        contextMenuHidden={true}
+        keyboardType="visible-password"
+        spellCheck={false}
+        textContentType="password"
+        underlineColorAndroid="transparent"
+        autoCorrect={false}
         placeholderTextColor={theme.light}
         placeholder="password"
         style={[
