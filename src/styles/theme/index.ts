@@ -11,8 +11,7 @@ const theme = {
     default: '#dd5c64',
     dark: '#df8f61',
   },
-  success: '#3a955e',
-  error: '#fc9ea9',
+  success:"#3a955e",
   dark: '#11141c',
   light: '#f8f8f8',
 };
